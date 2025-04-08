@@ -15,9 +15,9 @@ class Logpack {
       year: 'numeric',
     },
     display: true,
-    displayColor: false,
-    displayDate: false,
-    displayLevel: false,
+    displayColor: true,
+    displayDate: true,
+    displayLevel: true,
   };
 
   private constructor() {
@@ -49,22 +49,22 @@ class Logpack {
 
     const formattedMessage = this.formatMessage(message);
 
-    const identifier = level === LogLevel.LOG ? 'INFO' : level;
     const time = this.getTime(mergedConfig.locale, mergedConfig.dateFormat);
 
     let constructedMessage = '';
 
-    if (!mergedConfig.displayDate) {
+    if (mergedConfig.displayDate) {
       constructedMessage += `[${time}] `;
     }
 
-    if (!mergedConfig.displayLevel) {
+    if (mergedConfig.displayLevel) {
+      const identifier = level === LogLevel.LOG ? 'INFO' : level;
       constructedMessage += `[${identifier.toUpperCase()}] `;
     }
 
     constructedMessage += formattedMessage;
 
-    if (!mergedConfig.displayColor) {
+    if (mergedConfig.displayColor) {
       console[level](constructedMessage);
     } else {
       console.log(constructedMessage);

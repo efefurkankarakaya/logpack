@@ -34,9 +34,9 @@ describe('Logpack', () => {
     expect(consoleWarnSpy.mock.calls[0][0]).toContain(message);
   });
 
-  test('warn logs message with console.log when displayColor is true', () => {
+  test('warn logs message with console.log when displayColor is false', () => {
     const message = 'test warning no color';
-    Logpack.warn(message, { display: true, displayColor: true });
+    Logpack.warn(message, { display: true, displayColor: false });
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleWarnSpy).not.toHaveBeenCalled();
@@ -53,9 +53,9 @@ describe('Logpack', () => {
     expect(consoleErrorSpy.mock.calls[0][0]).toContain(message);
   });
 
-  test('error logs message with console.log when displayColor is true', () => {
+  test('error logs message with console.log when displayColor is false', () => {
     const message = 'test error no color';
-    Logpack.error(message, { display: true, displayColor: true });
+    Logpack.error(message, { display: true, displayColor: false });
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleErrorSpy).not.toHaveBeenCalled();
@@ -81,9 +81,9 @@ describe('Logpack', () => {
     expect(consoleLogSpy.mock.calls[0][0]).toContain(JSON.stringify(obj, null, '\t'));
   });
 
-  test('logs without date when displayDate is true', () => {
+  test('logs without date when displayDate is false', () => {
     const message = 'no date message';
-    Logpack.info(message, { displayDate: true });
+    Logpack.info(message, { displayDate: false });
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleLogSpy.mock.calls[0][0]).toContain('[INFO]');
@@ -91,9 +91,9 @@ describe('Logpack', () => {
     expect(consoleLogSpy.mock.calls[0][0]).not.toMatch(/\[\d{2}\/\d{2}\/\d{4}/);
   });
 
-  test('logs without level when displayLevel is true', () => {
+  test('logs without level when displayLevel is false', () => {
     const message = 'no level message';
-    Logpack.info(message, { displayLevel: true });
+    Logpack.info(message, { displayLevel: false });
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleLogSpy.mock.calls[0][0]).not.toContain('[INFO]');
