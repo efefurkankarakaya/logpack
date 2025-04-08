@@ -15,7 +15,7 @@ pnpm add logpack
 ## Usage
 
 ```typescript
-import { Logger } from 'logpack';
+import Logger from 'logpack';
 
 // Log information
 Logger.info('Application started');
