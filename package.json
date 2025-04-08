@@ -1,0 +1,34 @@
+{
+  "name": "logpack",
+  "version": "1.0.1",
+  "description": "A logging package for React and Next.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "logging",
+    "log",
+    "logger",
+    "logpack",
+    "server-side-logging",
+    "client-side-logging",
+    "nextjs-logging",
+    "react-logging",
+    "nextjs-logger",
+    "react-logger"
+  ],
+  "author": "Efe Furkan Karakaya",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.7.0",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
