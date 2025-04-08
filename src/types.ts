@@ -4,7 +4,7 @@ export type Config = {
 };
 
 export enum LogLevel {
-  INFO = 'INFO',
-  WARN = 'WARN',
-  ERROR = 'ERROR',
+  LOG = 'log',
+  WARN = 'warn',
+  ERROR = 'error',
 }

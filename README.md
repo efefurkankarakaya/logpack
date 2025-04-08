@@ -30,8 +30,8 @@ Logpack.error('Failed to connect to the database');
 Logpack.info({ user: 'John', role: 'admin' });
 
 // Conditionally log (useful for environment-specific logging)
-const isDev = process.env.NODE_ENV === 'development';
-Logpack.info('Debug message', isDev);
+const isProduction = process.env.NODE_ENV === 'production';
+Logpack.info('Debug message', { display: !isProduction });
 ```
 
 ## Features

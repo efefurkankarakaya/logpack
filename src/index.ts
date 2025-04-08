@@ -9,40 +9,30 @@ class Logpack {
   }
 
   public static info(message: any, config: Config = { display: true }) {
-    if (!config.display) {
-      return;
-    }
-
-    const formattedMessage = this.formatMessage(message);
-
-    console.log(`[${LogLevel.INFO}] [${this.getTime()}] ${formattedMessage}`);
+    this.dispatch(message, LogLevel.LOG, config);
   }
 
   public static warn(message: any, config: Config = { display: true }) {
-    if (!config.display) {
-      return;
-    }
-
-    const formattedMessage = this.formatMessage(message);
-
-    if (config.noColor) {
-      console.log(`[${LogLevel.WARN}] [${this.getTime()}] ${formattedMessage}`);
-    } else {
-      console.warn(`[${LogLevel.WARN}] [${this.getTime()}] ${formattedMessage}`);
-    }
+    this.dispatch(message, LogLevel.WARN, config);
   }
 
   public static error(message: any, config: Config = { display: true }) {
+    this.dispatch(message, LogLevel.ERROR, config);
+  }
+
+  private static dispatch(message: any, level: LogLevel, config: Config) {
     if (!config.display) {
       return;
     }
 
     const formattedMessage = this.formatMessage(message);
 
+    let identifier = level === LogLevel.LOG ? 'INFO' : level;
+
     if (config.noColor) {
-      console.log(`[${LogLevel.ERROR}] [${this.getTime()}] ${formattedMessage}`);
+      console.log(`[${identifier.toUpperCase()}] [${this.getTime()}] ${formattedMessage}`);
     } else {
-      console.error(`[${LogLevel.ERROR}] [${this.getTime()}] ${formattedMessage}`);
+      console[level](`[${identifier.toUpperCase()}] [${this.getTime()}] ${formattedMessage}`);
     }
   }
 

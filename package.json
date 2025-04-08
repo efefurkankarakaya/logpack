@@ -1,6 +1,6 @@
 {
   "name": "logpack",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A logging package for React and Next.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
