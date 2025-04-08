@@ -18,7 +18,7 @@ describe('Logpack', () => {
 
   test('info logs message correctly', () => {
     const message = 'test info message';
-    Logpack.info(message);
+    Logpack.info(message, {});
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleLogSpy.mock.calls[0][0]).toContain('[INFO]');
@@ -27,16 +27,16 @@ describe('Logpack', () => {
 
   test('warn logs message with console.warn', () => {
     const message = 'test warning message';
-    Logpack.warn(message);
+    Logpack.warn(message, {});
 
     expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     expect(consoleWarnSpy.mock.calls[0][0]).toContain('[WARN]');
     expect(consoleWarnSpy.mock.calls[0][0]).toContain(message);
   });
 
-  test('warn logs message with console.log when noColor is true', () => {
+  test('warn logs message with console.log when displayColor is true', () => {
     const message = 'test warning no color';
-    Logpack.warn(message, { display: true, noColor: true });
+    Logpack.warn(message, { display: true, displayColor: true });
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleWarnSpy).not.toHaveBeenCalled();
@@ -46,16 +46,16 @@ describe('Logpack', () => {
 
   test('error logs message with console.error', () => {
     const message = 'test error message';
-    Logpack.error(message);
+    Logpack.error(message, {});
 
     expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
     expect(consoleErrorSpy.mock.calls[0][0]).toContain('[ERROR]');
     expect(consoleErrorSpy.mock.calls[0][0]).toContain(message);
   });
 
-  test('error logs message with console.log when noColor is true', () => {
+  test('error logs message with console.log when displayColor is true', () => {
     const message = 'test error no color';
-    Logpack.error(message, { display: true, noColor: true });
+    Logpack.error(message, { display: true, displayColor: true });
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleErrorSpy).not.toHaveBeenCalled();
@@ -75,9 +75,40 @@ describe('Logpack', () => {
 
   test('formats object messages correctly', () => {
     const obj = { key: 'value' };
-    Logpack.info(obj);
+    Logpack.info(obj, {});
 
     expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     expect(consoleLogSpy.mock.calls[0][0]).toContain(JSON.stringify(obj, null, '\t'));
+  });
+
+  test('logs without date when displayDate is true', () => {
+    const message = 'no date message';
+    Logpack.info(message, { displayDate: true });
+
+    expect(consoleLogSpy).toHaveBeenCalledTimes(1);
+    expect(consoleLogSpy.mock.calls[0][0]).toContain('[INFO]');
+    expect(consoleLogSpy.mock.calls[0][0]).toContain(message);
+    expect(consoleLogSpy.mock.calls[0][0]).not.toMatch(/\[\d{2}\/\d{2}\/\d{4}/);
+  });
+
+  test('logs without level when displayLevel is true', () => {
+    const message = 'no level message';
+    Logpack.info(message, { displayLevel: true });
+
+    expect(consoleLogSpy).toHaveBeenCalledTimes(1);
+    expect(consoleLogSpy.mock.calls[0][0]).not.toContain('[INFO]');
+    expect(consoleLogSpy.mock.calls[0][0]).toContain(message);
+  });
+
+  test('configure method updates global config', () => {
+    const customLocale = 'tr-TR';
+    Logpack.configure({ locale: customLocale });
+
+    const message = 'configured message';
+    Logpack.info(message, {});
+
+    expect(consoleLogSpy).toHaveBeenCalledTimes(1);
+    expect(consoleLogSpy.mock.calls[0][0]).not.toMatch(/\[\d{2}\/\d{2}\/\d{4}/);
+    expect(consoleLogSpy.mock.calls[0][0]).toContain(message);
   });
 });

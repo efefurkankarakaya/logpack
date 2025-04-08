@@ -1,7 +1,11 @@
-export type Config = {
+export type Config = Partial<{
+  locale: string;
+  dateFormat: Record<string, string>;
   display: boolean;
-  noColor?: boolean;
-};
+  displayColor?: boolean;
+  displayDate?: boolean;
+  displayLevel?: boolean;
+}>;
 
 export enum LogLevel {
   LOG = 'log',
