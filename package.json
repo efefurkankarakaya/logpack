@@ -1,6 +1,6 @@
 {
   "name": "logpack",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A lightweight and zero dependency logging package for React and Next.js.",
   "author": "Efe Furkan Karakaya",
   "homepage": "https://github.com/efefurkankarakaya/logpack#README",
