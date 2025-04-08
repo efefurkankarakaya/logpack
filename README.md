@@ -1,6 +1,6 @@
-# LogPack
+# Logpack
 
-A lightweight, flexible TypeScript logger with formatted timestamps.
+A lightweight logging package for React and Next.js
 
 ## Installation
 
