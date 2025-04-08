@@ -1,34 +1,41 @@
 {
   "name": "logpack",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A lightweight and zero dependency logging package for React and Next.js.",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "test": "vitest --no-watch",
-    "test:watch": "vitest"
+  "author": "Efe Furkan Karakaya",
+  "homepage": "https://github.com/efefurkankarakaya/logpack#README",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/efefurkankarakaya/logpack"
   },
+  "license": "MIT",
   "keywords": [
     "logging",
     "log",
     "logger",
     "logpack",
     "server-side-logging",
+    "ssr-logging",
     "client-side-logging",
+    "csr-logging",
     "nextjs-logging",
     "react-logging",
     "nextjs-logger",
     "react-logger"
   ],
-  "author": "Efe Furkan Karakaya",
-  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "packageManager": "pnpm@10.7.0",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "vitest --no-watch",
+    "test:watch": "vitest"
+  },
   "devDependencies": {
     "typescript": "^5.8.3",
     "vitest": "^3.1.1"
