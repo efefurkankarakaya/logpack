@@ -1,4 +1,5 @@
 import { isServer } from './shared/lib';
+import { Config, LogLevel } from './types';
 
 class Logpack {
   private static instance: Logpack;
@@ -7,34 +8,42 @@ class Logpack {
     throw new Error('Logpack is a static class and cannot be instantiated.');
   }
 
-  public static info(message: any, display: boolean = true) {
-    if (!display) {
+  public static info(message: any, config: Config = { display: true }) {
+    if (!config.display) {
       return;
     }
 
     const formattedMessage = this.formatMessage(message);
 
-    console.log(`[INFO] [${this.getTime()}] ${formattedMessage}`);
+    console.log(`[${LogLevel.INFO}] [${this.getTime()}] ${formattedMessage}`);
   }
 
-  public static warn(message: any, display: boolean = true) {
-    if (!display) {
+  public static warn(message: any, config: Config = { display: true }) {
+    if (!config.display) {
       return;
     }
 
     const formattedMessage = this.formatMessage(message);
 
-    console.warn(`[WARN] [${this.getTime()}] ${formattedMessage}`);
+    if (config.noColor) {
+      console.log(`[${LogLevel.WARN}] [${this.getTime()}] ${formattedMessage}`);
+    } else {
+      console.warn(`[${LogLevel.WARN}] [${this.getTime()}] ${formattedMessage}`);
+    }
   }
 
-  public static error(message: any, display: boolean = true) {
-    if (!display) {
+  public static error(message: any, config: Config = { display: true }) {
+    if (!config.display) {
       return;
     }
 
     const formattedMessage = this.formatMessage(message);
 
-    console.error(`[ERROR] [${this.getTime()}] ${formattedMessage}`);
+    if (config.noColor) {
+      console.log(`[${LogLevel.ERROR}] [${this.getTime()}] ${formattedMessage}`);
+    } else {
+      console.error(`[${LogLevel.ERROR}] [${this.getTime()}] ${formattedMessage}`);
+    }
   }
 
   private static getTime = () => {

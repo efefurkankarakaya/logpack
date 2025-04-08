@@ -1,6 +1,6 @@
 {
   "name": "logpack",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A logging package for React and Next.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest --no-watch",
+    "test:watch": "vitest"
   },
   "keywords": [
     "logging",
@@ -29,6 +30,7 @@
   "type": "module",
   "packageManager": "pnpm@10.7.0",
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   }
 }
