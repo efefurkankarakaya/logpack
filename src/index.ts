@@ -28,15 +28,15 @@ class Logpack {
     this.globalConfig = { ...this.globalConfig, ...config };
   }
 
-  public static info(message: any, config: Config) {
+  public static info(message: any, config: Config = {}) {
     this.dispatch(message, LogLevel.LOG, config);
   }
 
-  public static warn(message: any, config: Config) {
+  public static warn(message: any, config: Config = {}) {
     this.dispatch(message, LogLevel.WARN, config);
   }
 
-  public static error(message: any, config: Config) {
+  public static error(message: any, config: Config = {}) {
     this.dispatch(message, LogLevel.ERROR, config);
   }
 

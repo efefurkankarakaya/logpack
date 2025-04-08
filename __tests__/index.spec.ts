@@ -16,6 +16,15 @@ describe('Logpack', () => {
     vi.clearAllMocks();
   });
 
+  test('info logs message correctly without config', () => {
+    const message = 'test info message';
+    Logpack.info(message);
+
+    expect(consoleLogSpy).toHaveBeenCalledTimes(1);
+    expect(consoleLogSpy.mock.calls[0][0]).toContain('[INFO]');
+    expect(consoleLogSpy.mock.calls[0][0]).toContain(message);
+  });
+
   test('info logs message correctly', () => {
     const message = 'test info message';
     Logpack.info(message, {});
