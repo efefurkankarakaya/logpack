@@ -1,10 +1,10 @@
 import { isServer } from './shared/lib';
 
-class Logger {
-  private static instance: Logger;
+class Logpack {
+  private static instance: Logpack;
 
   private constructor() {
-    throw new Error('Logger is a static class and cannot be instantiated.');
+    throw new Error('Logpack is a static class and cannot be instantiated.');
   }
 
   public static info(message: any, display: boolean = true) {
@@ -64,4 +64,4 @@ class Logger {
   }
 }
 
-export default Logger;
+export default Logpack;

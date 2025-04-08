@@ -15,23 +15,23 @@ pnpm add logpack
 ## Usage
 
 ```typescript
-import Logger from 'logpack';
+import Logpack from 'logpack';
 
 // Log information
-Logger.info('Application started');
+Logpack.info('Application started');
 
 // Log warnings
-Logger.warn('This feature is deprecated');
+Logpack.warn('This feature is deprecated');
 
 // Log errors
-Logger.error('Failed to connect to the database');
+Logpack.error('Failed to connect to the database');
 
 // Log objects
-Logger.info({ user: 'John', role: 'admin' });
+Logpack.info({ user: 'John', role: 'admin' });
 
 // Conditionally log (useful for environment-specific logging)
 const isDev = process.env.NODE_ENV === 'development';
-Logger.info('Debug message', isDev);
+Logpack.info('Debug message', isDev);
 ```
 
 ## Features
