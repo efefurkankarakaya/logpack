@@ -35,7 +35,7 @@ Logpack.info('Debug message', { display: !isProduction });
 
 // Configure global settings
 Logpack.configure({
-  locale: 'en-US',
+  locale: 'tr-TR',
   displayDate: true,
   displayLevel: true,
   displayColor: true,
@@ -49,9 +49,9 @@ interface Config {
   locale?: string;         // Locale for timestamp formatting (default: 'en-US')
   dateFormat?: Record<string, string>; // Date formatting options
   display?: boolean;       // Whether to display logs (default: true)
-  displayColor?: boolean;  // Enable colored logs (default: false)
-  displayDate?: boolean;   // Show timestamps in logs (default: false)
-  displayLevel?: boolean;  // Show log level (INFO, WARN, ERROR) (default: false)
+  displayColor?: boolean;  // Enable colored logs (default: true)
+  displayDate?: boolean;   // Show timestamps in logs (default: true)
+  displayLevel?: boolean;  // Show log level (INFO, WARN, ERROR) (default: true)
 }
 ```
 
