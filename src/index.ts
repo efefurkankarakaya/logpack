@@ -53,13 +53,13 @@ class Logpack {
 
     let constructedMessage = '';
 
-    if (mergedConfig.displayDate) {
-      constructedMessage += `[${time}] `;
-    }
-
     if (mergedConfig.displayLevel) {
       const identifier = level === LogLevel.LOG ? 'INFO' : level;
       constructedMessage += `[${identifier.toUpperCase()}] `;
+    }
+
+    if (mergedConfig.displayDate) {
+      constructedMessage += `[${time}] `;
     }
 
     constructedMessage += formattedMessage;
